@@ -6,7 +6,6 @@
 body {
   display: flex;
   flex-direction: column;
-  text-align: center;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
@@ -15,9 +14,27 @@ body {
 form {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 20px;
 }
 
 input {
   padding: 8px;
+}
+
+li {
+ list-style: none;
+ display: flex;
+ align-items: flex-start;
+ flex-direction: column;
+ gap: 0.5rem;
+ border-bottom: 1px solid black;
+ padding: .75rem;
+ margin-bottom: 1rem;
+ text-align: left;
+}
+
+ul {
+  padding: 0;
+  margin-bottom: 1rem;
 }
