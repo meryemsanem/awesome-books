@@ -27,6 +27,9 @@ const createBookHTML = (book) => {
   title.innerText = book.title;
   author.innerText = book.author;
   removeBtn.innerText = 'Remove';
+  removeBtn.classList.add("remove-btn")
+  removeBtn.setAttribute("data-book-title", book.title)
+  removeBtn.setAttribute("data-book-author", book.author)
 
   li.appendChild(title);
   li.appendChild(author);
@@ -48,5 +51,12 @@ form.addEventListener('submit', (e) => {
   loadSingleBook({title, author});
   e.target.reset();
 });
+
+booksList.addEventListener("click", (e) => {
+  if(e.target.classList.contains("remove-btn")){
+   e.target.style.background = "red"  
+  
+  }
+})
 
 window.addEventListener('load', loadBooks);
