@@ -1,28 +1,52 @@
-const awesomeBooks = [];
+const storedBooks = localStorage.getItem('awesomeBooks');
+const awesomeBooks = storedBooks ? JSON.parse(storedBooks) : [];
 
 const booksList = document.querySelector('#books');
 const form = document.getElementById('form');
 
 const loadBooks = () => {
   awesomeBooks.forEach((book) => {
-    const li = document.createElement('li');
-    const title = document.createElement('span');
-    const author = document.createElement('span');
-    const removeBtn = document.createElement('button');
-
-    title.classList.add("title");
-    author.classList.add("author");
-
-    title.innerText = book.title;
-    author.innerText = book.author;
-    removeBtn.innerText = "Remove";
-
-    li.appendChild(title);
-    li.appendChild(author);
-    li.appendChild(removeBtn);
-    booksList.appendChild(li);
+    booksList.appendChild(createBookHTML(book));
   });
 };
+
+const loadSingleBook = (book) => {
+  const html = createBookHTML(book);
+  booksList.appendChild(html);
+}
+
+const createBookHTML = (book) => {
+  const li = document.createElement('li');
+  const title = document.createElement('span');
+  const author = document.createElement('span');
+  const removeBtn = document.createElement('button');
+
+  title.classList.add('title');
+  author.classList.add('author');
+
+  title.innerText = book.title;
+  author.innerText = book.author;
+  removeBtn.innerText = 'Remove';
+
+  li.appendChild(title);
+  li.appendChild(author);
+  li.appendChild(removeBtn);
+  return li;
+};
+
+const addBook = (title, author) => {
+  awesomeBooks.push({ title, author });
+};
+
+form.addEventListener('submit', (e) => {
   e.preventDefault();
-  console.log(e.target);
+  const inputs = e.target.elements;
+  const title = inputs['title'].value;
+  const author = inputs['author'].value;
+  addBook(title, author);
+  localStorage.setItem('awesomeBooks', JSON.stringify(awesomeBooks));
+  loadSingleBook({title, author});
+  e.target.reset();
 });
+
+window.addEventListener('load', loadBooks);
