@@ -6,22 +6,20 @@ const form = document.getElementById('form');
 
 const createBookHTML = (book) => {
   const li = document.createElement('li');
-  const title = document.createElement('span');
-  const author = document.createElement('span');
+  const bookDetails = document.createElement('span');
   const removeBtn = document.createElement('button');
 
-  title.classList.add('title');
-  author.classList.add('author');
-
-  title.innerText = book.title;
-  author.innerText = book.author;
-  removeBtn.innerText = 'Remove';
+  li.classList.add('book');
+  bookDetails.classList.add('book-details');
   removeBtn.classList.add('remove-btn');
+  removeBtn.classList.add('btn');
+
+  bookDetails.innerText = `"${book.title}" by ${book.author}`;
+  removeBtn.innerText = 'Remove';
   removeBtn.setAttribute('data-book-title', book.title);
   removeBtn.setAttribute('data-book-author', book.author);
 
-  li.appendChild(title);
-  li.appendChild(author);
+  li.appendChild(bookDetails);
   li.appendChild(removeBtn);
   return li;
 };
