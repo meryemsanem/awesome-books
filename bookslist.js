@@ -1,7 +1,13 @@
 class BooksList {
+  #books;
+
   constructor() {
-    const storedBooks = localStorage.getItem("awesomeBooks");
-    this.books = storedBooks ? JSON.parse(storedBooks) : [];
+    const storedBooks = localStorage.getItem('awesomeBooks');
+    this.#books = storedBooks ? JSON.parse(storedBooks) : [];
+  }
+
+  get books() {
+    return this.#books;
   }
 
   addBook(title, author) {
@@ -9,15 +15,15 @@ class BooksList {
       title,
       author,
     };
-    this.books.push(newBook);
-    localStorage.setItem("awesomeBooks", JSON.stringify(this.books));
+    this.#books.push(newBook);
+    localStorage.setItem('awesomeBooks', JSON.stringify(this.#books));
   }
 
   removeBook(title, author) {
-    this.books = this.books.filter(
-      (book) => !(book.title === title && book.author === author)
+    this.#books = this.#books.filter(
+      (book) => !(book.title === title && book.author === author),
     );
-    localStorage.setItem("awesomeBooks", JSON.stringify(this.books));
+    localStorage.setItem('awesomeBooks', JSON.stringify(this.#books));
   }
 }
 export default BooksList;
