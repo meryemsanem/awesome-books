@@ -67,8 +67,35 @@ booksList.addEventListener('click', (e) => {
 window.addEventListener('load', loadBooks);
 
 setInterval(() => {
+  const suffix = (day) => {
+    if (day === 1) {
+      return 'st';
+    }
+    if (day === 2) {
+      return 'nd';
+    }
+    if (day === 3) {
+      return 'rd';
+    }
+    return 'th';
+  };
+
+  const getAmPm = (hrs) => {
+    if (hrs > 12) {
+      return 'pm';
+    }
+    return 'am';
+  };
+
   const d = new Date();
-  const day = d.toLocaleString('default', { dateStyle: 'long' });
-  const time = d.toLocaleString('default', { timeStyle: 'medium' });
-  date.innerText = `${day}, ${time.toLowerCase()}`;
+  const month = d.toLocaleString('default', { month: 'long' });
+  const day = d.getDate();
+  const year = d.getFullYear();
+  const hrs = d.getHours();
+  const min = d.getMinutes();
+  const sec = d.getSeconds();
+
+  date.innerText = `${month} ${day}${suffix(
+    day,
+  )} ${year}, ${hrs % 12}:${min}:${sec} ${getAmPm(hrs)}`;
 }, 1000);
