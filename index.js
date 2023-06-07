@@ -4,6 +4,7 @@ const awesomeBooks = new BooksList();
 
 const booksList = document.querySelector('#books');
 const form = document.getElementById('form');
+const date = document.getElementById('date');
 
 const createBookHTML = (book) => {
   const li = document.createElement('li');
@@ -64,3 +65,10 @@ booksList.addEventListener('click', (e) => {
 });
 
 window.addEventListener('load', loadBooks);
+
+setInterval(() => {
+  const d = new Date();
+  const day = d.toLocaleString('default', { dateStyle: 'long' });
+  const time = d.toLocaleString('default', { timeStyle: 'medium' });
+  date.innerText = `${day}, ${time.toLowerCase()}`;
+}, 1000);
