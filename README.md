@@ -5,7 +5,7 @@
 # 📗 Table of Contents
 
 - [📗 Table of Contents](#-table-of-contents)
-- [Personal Portfolio Site ](#personal-portfolio-site-)
+- [Awesome Booklist ](#awesome-booklist-)
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
@@ -26,7 +26,7 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# Personal Portfolio Site <a name="about-project"></a>
+# Awesome Booklist <a name="about-project"></a>
 
 This project is the first project of Module 2 of Microverse Full Stack Program. It's a simple book list app, where the user can add or remove books.
 
