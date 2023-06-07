@@ -57,6 +57,14 @@
   text-underline-offset: 0.25rem;
 }
 
+.nav-link.current {
+  color: #ff1818;
+}
+
+.nav-link.current:hover {
+  text-decoration: none;
+}
+
 .date {
   text-align: right;
 }
