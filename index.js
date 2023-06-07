@@ -31,17 +31,14 @@ const loadBooks = () => {
     const noBooks = document.createElement('div');
     noBooks.classList.add('no-books-msg');
     noBooks.innerText = 'You have not added any books';
+    booksList.innerHTML = '';
     booksList.appendChild(noBooks);
   } else {
+    booksList.innerHTML = '';
     awesomeBooks.books.forEach((book) => {
       booksList.appendChild(createBookHTML(book));
     });
   }
-};
-
-const loadSingleBook = (book) => {
-  const html = createBookHTML(book);
-  booksList.appendChild(html);
 };
 
 form.addEventListener('submit', (e) => {
@@ -50,7 +47,7 @@ form.addEventListener('submit', (e) => {
   const title = inputs.title.value;
   const author = inputs.author.value;
   awesomeBooks.addBook(title, author);
-  loadSingleBook({ title, author });
+  loadBooks();
   e.target.reset();
 });
 
