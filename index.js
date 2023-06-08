@@ -18,8 +18,7 @@ const createBookHTML = (book) => {
 
   bookDetails.innerText = `"${book.title}" by ${book.author}`;
   removeBtn.innerText = 'Remove';
-  removeBtn.setAttribute('data-book-title', book.title);
-  removeBtn.setAttribute('data-book-author', book.author);
+  removeBtn.setAttribute('data-book-id', book.id);
 
   li.appendChild(bookDetails);
   li.appendChild(removeBtn);
@@ -53,9 +52,8 @@ form.addEventListener('submit', (e) => {
 
 booksList.addEventListener('click', (e) => {
   if (e.target.classList.contains('remove-btn')) {
-    const title = e.target.dataset.bookTitle;
-    const author = e.target.dataset.bookAuthor;
-    awesomeBooks.removeBook(title, author);
+    const id = e.target.dataset.bookId;
+    awesomeBooks.removeBook(id);
     booksList.innerHTML = ' ';
     loadBooks();
   }
@@ -92,7 +90,7 @@ setInterval(() => {
   const min = d.getMinutes();
   const sec = d.getSeconds();
 
-  date.innerText = `${month} ${day}${suffix(
-    day,
-  )} ${year}, ${hrs % 12}:${min}:${sec} ${getAmPm(hrs)}`;
+  date.innerText = `${month} ${day}${suffix(day)} ${year}, ${
+    hrs % 12
+  }:${min}:${sec} ${getAmPm(hrs)}`;
 }, 1000);
